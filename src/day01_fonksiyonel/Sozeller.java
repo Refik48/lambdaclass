@@ -1,4 +1,4 @@
-package fonksiyonel01;
+package day01_fonksiyonel;
 
 public class Sozeller {
 
