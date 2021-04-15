@@ -24,19 +24,22 @@ public class Stream01_Integer {
         rakamlar.add(8);
         rakamlar.add(9);
         System.out.println("Liste : " + rakamlar);
-        // Method cagirma olunca t'ye gerek yok fakat Klasik kullanim yaoarsam ;
+
+        System.out.println("FOR EACH ICINI t'li SOUT YAZMA");
+        // Method cagirma olunca t'ye gerek yok fakat Klasik kullanim yaparsam ;
         rakamlar.stream().filter(t -> t%2 != 0).forEach(t -> System.out.print(t + " "));
 
-        System.out.println("");
-
+        System.out.println("\n FOR EACH ICINDE SOUT'U METHOD CALL YAPMA");
+        // Method call ile yazma ;
         rakamlar.stream().filter(t -> t%2 != 0).forEach(System.out :: print);
-        // Method referansi ile bunlari sadece yan yana yazdirabilirim fakat burada method olusturmadan yapamam
+        // Cikan sonucta rakamlar bitisik yazilacaktir burada onlari ayiramam. Ayirmak istersem diger yollardan birinde
+        // rakamlari ayirip, yanyana yazdirabilirim.
         // Burada aralarina bosluk koyamadim cunku method referans'da boyle bir secegim yok.
-        // Bunun icin soyle bir yol izlemem gerekiyor.
-        System.out.println("METHOD REFERANS KISMI");
-        rakamlar.stream().filter(t -> t%2 != 0).forEach(Stream01_Integer :: yazdir);
+        // Bunun icin soyle bir yol tercih edebilirim. (Baska yollarda var)
+        System.out.println("\nFILTER'I DEGISTIREREK TEK RAKAMLARI BULMA");
+        rakamlar.stream().filter(t -> t%2 == 1).forEach(Stream01_Integer :: yazdir);
 
-        System.out.println("FILTERI DEGISTIRMEK");
+        System.out.println("\nMETHOD CALL ILE TEK RAKAMLARI BULMA");
         rakamlar.stream().filter(Stream01_Integer::tekMi).forEach(Stream01_Integer :: yazdir);
     }
     public static void yazdir(int t) {
@@ -44,6 +47,8 @@ public class Stream01_Integer {
     }
 
     public static boolean tekMi (int x) {
+
         return x%2!=0;
     }
+
 }
