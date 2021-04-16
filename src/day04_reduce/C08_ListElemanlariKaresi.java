@@ -1,12 +1,11 @@
-package day04;
+package day04_reduce;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class C9_Collect02 {
+public class C08_ListElemanlariKaresi {
     public static void main(String[] args) {
         // Listenin tek elemanlarin karelerini sirali olarak ve tekrarsiz bir sekilde listeye kaydeden method'u yaziniz.
         List<Integer> liste = new ArrayList<>();
@@ -22,10 +21,10 @@ public class C9_Collect02 {
         liste.add(-8);
         liste.add(-15);
         List<Integer> liste2 = tekKareSiraTekrarsiz(liste);
-        System.out.println("25.Satir" + liste2);
-        System.out.println("26. Satir" + tersSirala(liste));
+        System.out.println("Yeni bir listeye attik : " + liste2);
+        System.out.println("Reverse Order Method'unu kullandim : " + tersSirala(liste));
         List<Integer> powList = powMethodKaresiAlma(liste);
-        System.out.println("28. Satir" + powList);
+        System.out.println("pow Method'u ile karesini alip yeni bir list yaptim : " + powList);
     }
 
     public static List<Integer> tekKareSiraTekrarsiz(List<Integer> liste) {
@@ -43,7 +42,7 @@ public class C9_Collect02 {
                 stream().
                 distinct().
                 filter(x->x%2==1).
-                map(x -> (int) Math.pow(x, 2)). // UST ALMA DEMEKTIR YANI BURASI ICIN KARESI
+                map(x -> (int) Math.pow(x, 2)). // UST ALMA DEMEKTIR, YANI BURASI ICIN KARESI
                 distinct().
                 sorted().
                 collect(Collectors.toList());

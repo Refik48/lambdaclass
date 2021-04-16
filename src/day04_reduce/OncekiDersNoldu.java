@@ -1,4 +1,4 @@
-package day04;
+package day04_reduce;
 
 public class OncekiDersNoldu {
     /*
