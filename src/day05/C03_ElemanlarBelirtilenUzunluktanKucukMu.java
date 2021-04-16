@@ -3,7 +3,7 @@ package day05;
 import java.util.ArrayList;
 import java.util.List;
 
-public class C3_ElemanlarBelirtilenUzunluktanKucukMu {
+public class C03_ElemanlarBelirtilenUzunluktanKucukMu {
     public static void main(String[] args) {
         // Listedeki tum elemanlarin uzunluklari belirtilen uzunluktan
         // kucuk mu diye kontrol eden method'u yaziniz

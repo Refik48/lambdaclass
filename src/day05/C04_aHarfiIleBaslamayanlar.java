@@ -3,7 +3,7 @@ package day05;
 import java.util.ArrayList;
 import java.util.List;
 
-public class C4_aHarfiIleBaslamayanlar {
+public class C04_aHarfiIleBaslamayanlar {
     public static void main(String[] args) {
         // Hangi elemanlar "a" harfi ile baslamiyor ?
         List<String> liste = new ArrayList<>();
