@@ -72,6 +72,17 @@ public class C01_Files {
                 flatMap(Arrays::stream).
                 filter(t-> t.contains("a")).count();
         // long oldu cunku count int degil long ile calisiyor, int yazdigimizda hata veriyor zaten long'a duzelt diyor.
-        System.out.println("A Harfinin Sayisi : " + aSayisi);
+        System.out.println("A Harfinin Sayisi : " + aSayisi); // 21 Ayni kelimede olan harfleri de saydi.
+
+        System.out.println("\n=============Bosluk & Isaret Haric Kac Adet Karakter var ?=============");
+        // Bosluk ve noktalama osaretleri haric dosyada kac adet karakter kullanildigini
+        // hesaplayarak sonucu konsola yazdiran uygulamayi yaziniz.
+        // \\W "a-z" U "A-Z" U "0-9" U "_" haric tum karakterler demektir.
+        System.out.println(Files.lines(Paths.get(path)).
+                map(x->x.replace("_",""). // \\W _'yi silmedigi icin elle sildim.
+                replaceAll("\\W",""). // \\W ile sildim ve
+                split("")). // split("") method'u butun harfleri tek tek birbirinden ayiriyordu.
+                flatMap(Arrays::stream).
+                count());
     }
 }
