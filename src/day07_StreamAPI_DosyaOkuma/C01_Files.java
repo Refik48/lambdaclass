@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.stream.Stream;
 
@@ -55,5 +56,15 @@ public class C01_Files {
         // Son satirda bir cok nihat var neden 3 saydi ? Cunku her satirdaki kelimeyi 1 sayiyor,
         // o satirda kac tane "nihat" yazisi olursa olsun.
 
+        System.out.println("\n=============Farkli Kelimeleri Yazdirma=============");
+        // Dosyadaki tum farkli kelimeleri alt alta yazdiralim
+        Files.lines(Path.of(path)).map(x->x.toLowerCase().split(" ")).
+                flatMap(Arrays::stream). // Kelimelerden olusan bir listemiz olmus oldu.
+                distinct().
+                forEach(System.out::println);
+        // File dosyasi yerine normal bir metin koyuldugunda asil
+
+        // Map : Stream'in transformasyon method'udur. Veriyi degistirir.
+        // FlapMap : Nested olan Collection'lari dumduz bir hale getiriyor, islenmesi kolay olsun diye.
     }
 }
