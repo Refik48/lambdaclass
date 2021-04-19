@@ -1,5 +1,6 @@
 package day07_StreamAPI_DosyaOkuma;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -34,11 +35,25 @@ public class C01_Files {
         System.out.println("\n=============Sadece Ilk Satiri Yazdirma=============");
         // Dosyadan sadece ilk satiri okuyarak buyuk harf olarak konsola yazdiralim.
         Files.lines(Paths.get(path)).limit(1).forEach(System.out::println);
-        
+
         System.out.println("\n=============Limit Yazilan Sayi Kadar Satiri Bize Yazdirir=============");
         Files.lines(Paths.get(path)).limit(2).forEach(System.out::println);
 
         System.out.println("\n=============Skip Yapilan Satir Esgecip Kalanlar Yazdirilir=============");
         Files.lines(Paths.get(path)).skip(1).forEach(System.out::println);
+
+        System.out.println("\n=============Sadece 3. ve 4. Satiri Yazdirma=============");
+        Files.lines(Paths.get(path)).skip(2).limit(2).forEach(System.out::println);
+        // skip(2) diyerek ilk 2 satiri esgeciyorum.
+        // limit(2) diyerek siradaki 2 satirla sinirlandiriyorum. Yani 3. ve 4. satiri aliyorum.
+        // Diglerini yazdirmiyor cunku limit'de yazilan satirlarla islem yapiyorum.
+
+        System.out.println("\n=============Nihat kelimesi kac kez var ?=============");
+        // "nihat"(kucuk veya buyuk) kelimesinin dosya icerisinde kac adet gectigini yazdiralim.
+        System.out.println(Files.lines(Paths.get(path)).map(String::toLowerCase).filter(x->x.contains("nihat")).count());
+        // Count terminal'i kullandigimiz icin kac adet yazildigi gosterilecektir o yuzden sout icine aldim
+        // Son satirda bir cok nihat var neden 3 saydi ? Cunku her satirdaki kelimeyi 1 sayiyor,
+        // o satirda kac tane "nihat" yazisi olursa olsun.
+
     }
 }
