@@ -62,9 +62,16 @@ public class C01_Files {
                 flatMap(Arrays::stream). // Kelimelerden olusan bir listemiz olmus oldu.
                 distinct().
                 forEach(System.out::println);
-        // File dosyasi yerine normal bir metin koyuldugunda asil
-
+        // File dosyasi yerine normal bir metin koyuldugunda asil fark anlasilir.
         // Map : Stream'in transformasyon method'udur. Veriyi degistirir.
         // FlapMap : Nested olan Collection'lari dumduz bir hale getiriyor, islenmesi kolay olsun diye.
+
+        System.out.println("\n=============Kelimeler Icerisinde Kac Tane A Harfi vardir ?=============");
+        // Kelimeler icerisin "K" veya "k" harfi olanlari sayalim ve sonucu konsola yazdiralim.
+        long aSayisi = Files.lines(Paths.get(path)).map(t->t.toLowerCase().split("")).
+                flatMap(Arrays::stream).
+                filter(t-> t.contains("a")).count();
+        // long oldu cunku count int degil long ile calisiyor, int yazdigimizda hata veriyor zaten long'a duzelt diyor.
+        System.out.println("A Harfinin Sayisi : " + aSayisi);
     }
 }
